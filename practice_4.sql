@@ -39,3 +39,23 @@ UNION
 SELECT DISTINCT 分類, 商品名, 単価 FROM 注文履歴
 WHERE 分類 = '3'
 ORDER BY 分類, 商品名
+
+--.2-1
+SELECT * FROM 奇数
+UNION 
+SELECT * FROM 偶数
+
+--.2-2
+SELECT * FROM 整数
+EXCEPT
+SELECT * FROM 偶数
+
+--.2-3
+SELECT * FROM 整数
+INTERSECT
+SELECT * FROM 偶数
+
+--.2-4
+SELECT * FROM 偶数
+INTERSECT
+SELECT * FROM 奇数
