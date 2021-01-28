@@ -42,3 +42,41 @@ SELECT 都市名, MIN(最低気温)
 FROM 都市別気象観測
 GROUP BY 都市名
 HAVING MIN(最低気温) <= -10
+
+
+--.2-1
+SELECT COUNT(*) AS 入室中の社員
+WHERE 退室 IS NULL
+FROM 入退室管理
+
+--.2-2
+SELECT 社員名, COUNT(*) AS 入室回数
+FROM 入退室管理
+GROUP BY 社員名
+ORDER BY 退室 DESC
+
+--.2-3
+SELECT CASE 事由区分 WHEN '1' THEN 'メンテナンス'
+                     WHEN '2' THEN 'リリース作業'
+                     WHEN '3' THEN '障害対応'
+                     WHEN '4' THEN 'その他'
+       END AS 事由,
+       COUNT(*) AS 入室回数
+FROM 入退室管理
+GROUP BY 事由区分
+
+--.2-4
+SELECT 社員名, COUNT(*) AS 回数
+FROM 入退室管理
+GROUP BY 社員名
+HAVING COUNT(*) >= 10
+
+--.2-5
+SELECT 日付, COUNT(社員名) AS 人数
+FROM 入退室管理
+WHERE 事由区分 = '3'
+GROUp BY 日付
+
+
+--.3
+2 5
